@@ -49,13 +49,13 @@ const path = 'https://www.mio.se/api/v1.0/products/search?filter=q%3D*%26offset%
     fs.writeFileSync(resultsFile, JSON.stringify(results, null, 2), { encoding: 'utf8' });
   }
 
-  let bestArticles = {};
+  let groupedArticles = {};
 
   for(const articleInfo of Object.values(results)) {
-    bestArticles[articleInfo.clearanceUnderFurniture] = bestArticles[articleInfo.clearanceUnderFurniture] || []
-    bestArticles[articleInfo.clearanceUnderFurniture].push(articleInfo)
+    groupedArticles[articleInfo.clearanceUnderFurniture] = groupedArticles[articleInfo.clearanceUnderFurniture] || []
+    groupedArticles[articleInfo.clearanceUnderFurniture].push(articleInfo)
   }
 
-  console.log(Object.keys((bestArticles)));
-  // console.log(bestArticles[18])
+  console.log(Object.keys((groupedArticles)));
+  // console.log(groupedArticles[18])
 })()
